@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 // API Routes
 app.get("/", function (req, res){
     res.sendfile(path.join(__dirname, "home.html"));
+    
 })
 
 app.get("/", function (req, res){
