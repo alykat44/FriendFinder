@@ -14,7 +14,7 @@ PORT = process.env.PORT || 4000;
 
 // Routes and images/Data Parsing
 
-/* app.use(express.static("app/public")); */
+app.use(express.static("app/public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
