@@ -9,36 +9,21 @@ var app = express();
 PORT = process.env.PORT || 4000;
 
 
-// Sets up app for data parsing
 
+// Routes and images/Data Parsing
 
+app.use(express.static("app/public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
-
-// Data Objects
-
-
-// API Routes
-app.get("/", function (req, res){
-    res.sendfile(path.join(__dirname, "home.html"));
-    
-})
-
-app.get("/", function (req, res){
-    res.sendfile(path.join(__dirname, "survey.html"));
-})
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "applicaton/vnd.api+json" }));
 
 
 
+// API routing
 
-
-
-
-
-
-
-
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 
 
