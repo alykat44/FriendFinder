@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Survey HTML </title>
-  <!-- Latest compiled and minified CSS & JS -->
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -30,19 +32,16 @@
           <form method="POST" role="form">
 
             <div class="form-group">
-              <label for="name">Name (Required)</label>
-              <input type="text" class="form-control" id="name">
+              <label for="formGroupExampleInput">Name (Required)</label>
+              <input type="text" class="form-control" id="friendName" placeholder="">
             </div>
 
             <form>
 
               <div class="form-group">
-                <label for="name">Link to Photo Image (Required)</label>
-                <input type="text" class="form-control" id="friend-pic" placeholder="">
-
-              </div>
-
-
+                <label for="formGroupExampleInput2">Link to Photo Image (Required)</label>
+                <input type="text" class="form-control" id="friendPic" placeholder="">
+                </div>
 
             </form>
 
@@ -193,6 +192,7 @@
                   <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLabel">Meet your New Best Friend!</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
 
                     </button>
 
@@ -208,27 +208,27 @@
                   </div>
               </div>
 
-          </div>
+            </div>
+
+            </div>
+
+
+
+            <footer class="footer">
+              <div class="container">
+                <p>
+                  <a href="/api/friends">API Friends List |
+                    <a href="https:///github.com/alykat44/friendfinder">GitHub Repo</a>
+
+                </p>
+              </div>
+
+
+            </footer>
+
+
 
         </div>
-
-
-
-        <footer class="footer">
-          <div class="container">
-            <p>
-              <a href="/api/friends">API Friends List |
-                <a href="https:///github.com/alykat44/friendfinder">GitHub Repo</a>
-
-            </p>
-          </div>
-
-
-        </footer>
-
-
-
-      </div>
 
 </body>
 
@@ -266,7 +266,7 @@
     var questionFive = parseInt($("#q5value").val());
     var questionSix = parseInt($("#q6value").val());
     var questionSeven = parseInt($("#q7value").val());
-    var questionEight = parseInt($("#q28alue").val());
+    var questionEight = parseInt($("#q8value").val());
     var questionNine = parseInt($("#q9value").val());
     var questionTen = parseInt($("#q10value").val());
 
@@ -350,6 +350,7 @@
             var difference = Math.abs(newFriendIndex - currentFriendIndex);
             add.push(difference);
           }
+          // Math.abs runs the absolute value of a number
 
           // i loop closing
 
