@@ -16,6 +16,7 @@ Looking for a new friend? Use Friend Finder - a short survey of questions that o
 
 
 
-# Heroku Link:
+# Heroku Link:  https://brofinder.herokuapp.com/
+
 
 
