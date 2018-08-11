@@ -8,7 +8,7 @@ var path = require("path");
 
 var app = express();
 
-PORT = process.env.PORT || 4000;
+PORT = process.env.PORT || 8080;
 
 
 
@@ -34,5 +34,5 @@ require(path.join(__dirname, "./app/routing/htmlRoutes.js"))(app);
 // Listener
 
 app.listen(PORT, function(){
-    console.log("App listening on PORT" + PORT);
-})
+    console.log("App listening on PORT: " + PORT);
+});
