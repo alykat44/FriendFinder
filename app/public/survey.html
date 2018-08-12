@@ -230,8 +230,8 @@
 
       </div>
 
-    </body>
-    </html>
+
+
 
 
 
@@ -246,7 +246,7 @@
         var sumArray = [];
 
 
-        $("#submit").on("click", function () {
+        $("#Submit").on("click", function () {
           event.preventDefault();
 
           scores = [];
@@ -310,7 +310,7 @@
 
         function getFriends() {
 
-          var currentURL = window.locaton.origin;
+          var currentURL = window.location.origin;
 
           $.ajax({ url: currentURL + "/api/friends", method: "GET" })
             .done(function (friendsArray) {
@@ -380,6 +380,7 @@
               // Closeing j loop
 
               $("trueFriendName").text(trueFriend.friendName);
+              console.log(trueFriend.friendName)
 
               var friendpic = trueFriend.friendPhoto;
               $("#img").attr("src", friendpic);
@@ -392,6 +393,6 @@
 
       </script>
 
+   </body>
 
-
-
+</html>
