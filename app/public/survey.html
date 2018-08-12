@@ -188,7 +188,7 @@
 
             <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledbye="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <dic class="modal-content">
+                <div class="modal-content">
                   <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLabel">Meet your New Best Friend!</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -206,193 +206,198 @@
 
 
                   </div>
+                </div>
+
               </div>
 
             </div>
+
+
+
+            <footer class="footer">
+              <div class="container">
+                <p>
+                  <a href="/api/friends">API Friends List |
+                    <a href="https:///github.com/alykat44/friendfinder">GitHub Repo</a>
+
+                </p>
+              </div>
+
+
+            </footer>
+
+
 
         </div>
 
 
 
-        <footer class="footer">
-          <div class="container">
-            <p>
-              <a href="/api/friends">API Friends List |
-                <a href="https:///github.com/alykat44/friendfinder">GitHub Repo</a>
-
-            </p>
-          </div>
-
-
-        </footer>
 
 
 
-      </div>
+        <script type="text/javascript">
+
+          var newFriend;
+          var scores;
+          var newFriendscores;
+          var add = [];
+          var allScores = [];
+          var counter = 0;
+          var sumArray = [];
+
+
+          $("#Submit").on("click", function () {
+            event.preventDefault();
+
+            scores = [];
+
+            newFriend = {
+              name: $("#friendName").val().trim(),
+              link: $("#friendPic").val().trim(),
+              responses: scores
+            };
+
+
+            var questionOne = parseInt($("#q1value").val());
+            var questionTwo = parseInt($("#q2value").val());
+            var questionThree = parseInt($("#q3value").val());
+            var questionFour = parseInt($("#q4value").val());
+            var questionFive = parseInt($("#q5value").val());
+            var questionSix = parseInt($("#q6value").val());
+            var questionSeven = parseInt($("#q7value").val());
+            var questionEight = parseInt($("#q8value").val());
+            var questionNine = parseInt($("#q9value").val());
+            var questionTen = parseInt($("#q10value").val());
+
+
+            scores.push(questionOne);
+            scores.push(questionTwo);
+            scores.push(questionThree);
+            scores.push(questionFour);
+            scores.push(questionFive);
+            scores.push(questionSix);
+            scores.push(questionSeven);
+            scores.push(questionEight);
+            scores.push(questionNine);
+            scores.push(questionTen);
+
+
+            /* console.log(newFriend); */
+
+            newFriendScores = newFriend.responses;
+            /* console.log(newFriendscores); */
+
+
+            getFriends();
+
+
+          });
+
+          $("#closeModal").on("click", function () {
+
+            $("#friendName").val("");
+            $("#friendPic").val("");
+            $(".custom-select").val("Select an Option....");
+
+            add = [];
+            sum = 0;
+            startingSum = 100;
+            allScores = [];
+
+            $.post("/api/friends", newFriend, function (data) { });
+
+          });
+
+          function getFriends() {
+
+            var currentURL = window.location.origin;
+
+            $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+              .done(function (friendsArray) {
+
+                console.log("garbage");
+
+                console.log("--------------------------------------");
+                console.log("URL: " + currentURL + "/api/friends");
+                console.log("--------------------------------------");
+
+                console.log(friendsArray);
+                console.log("--------------------------------------");
+
+                console.log(newFriendScores);
+
+                // loop through allScores Array to get each index score
+
+                for (var j = 0; j < friendsArray.length; j++) {
+                  add = [];
+                  sum = 0;
+                  startingSum = 100;
+
+                  var responses = friendsArray[j].responses;
+                  allScores.push(responses);
+
+                  console.log(allScores);
+
+                  var currentFriend = allScores[j];
+
+
+
+                  // index of newly entered friend's scores with prepopulated friends to see result and differences
+
+                  for (var i = 0; i < 10; i++) {
+
+                    var newFriendIndex = newFriendScores[i];
+                    var currentFriendIndex = currentFriend[i];
+                    var difference = Math.abs(newFriendIndex - currentFriendIndex);
+                    add.push(difference);
+                  }
+                  // Math.abs runs the absolute value of a number
+
+                  // i loop closing
+
+                  // Adding all user input to check for closet match
+
+                  sum = add.reduce(function (a, b) {
+                    return a + b;
+
+                  }, 0);
+
+                  console.log(sum);
+
+                  if (sum < startingSum) {
+                    startingSum = sum;
+
+                    trueFriend = {
+                      friendName: friendsArray[j].name,
+                      friendPhoto: friendsArray[j].link
+                    };
 
 
 
 
-
-
-      <script type="text/javascript">
-
-        var newFriend;
-        var scores;
-        var newFriendscores;
-        var add = [];
-        var allScores = [];
-        var counter = 0;
-        var sumArray = [];
-
-
-        $("#Submit").on("click", function () {
-          event.preventDefault();
-
-          scores = [];
-
-          newFriend = {
-            name: $("#friendName").val().trim(),
-            link: $("#friendPic").val().trim(),
-            responses: scores
-          };
-
-
-          var questionOne = parseInt($("#q1value").val());
-          var questionTwo = parseInt($("#q2value").val());
-          var questionThree = parseInt($("#q3value").val());
-          var questionFour = parseInt($("#q4value").val());
-          var questionFive = parseInt($("#q5value").val());
-          var questionSix = parseInt($("#q6value").val());
-          var questionSeven = parseInt($("#q7value").val());
-          var questionEight = parseInt($("#q8value").val());
-          var questionNine = parseInt($("#q9value").val());
-          var questionTen = parseInt($("#q10value").val());
-
-
-          scores.push(questionOne);
-          scores.push(questionTwo);
-          scores.push(questionThree);
-          scores.push(questionFour);
-          scores.push(questionFive);
-          scores.push(questionSix);
-          scores.push(questionSeven);
-          scores.push(questionEight);
-          scores.push(questionNine);
-          scores.push(questionTen);
-
-
-          console.log(newFriend);
-
-          newFriendScores = newFriend.responses;
-          console.log(newFriendscores);
-
-
-          getFriends();
-
-
-        });
-
-        $("#closeModal").on("click", function () {
-
-          $("#friendName").val("");
-          $("#friendPic").val("");
-          $(".custom-select").val("Select an Option....");
-
-          add = [];
-          sum = 0;
-          startingSum = 100;
-          allScores = [];
-
-          $.post("/api/friends", newFriend, function (data) { });
-
-        });
-
-        function getFriends() {
-
-          var currentURL = window.location.origin;
-
-          $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-            .done(function (friendsArray) {
-
-              console.log("--------------------------------------");
-              console.log("URL: " + currentURL + "/api/friends");
-              console.log("--------------------------------------");
-
-              console.log(friendsArray);
-              console.log("--------------------------------------");
-
-              console.log(newFriendScores);
-
-              // loop through allScores Array to get each index score
-
-              for (var j = 0; j < friendsArray.length; j++) {
-                add = [];
-                sum = 0;
-                startingSum = 100;
-
-                var responses = friendsArray[j].responses;
-                allScores.push(responses);
-
-                console.log(allScores);
-
-                var currentFriend = allScores[j];
-
-
-
-                // index of newly entered friend's scores with prepopulated friends to see result and differences
-
-                for (var i = 0; i < 10; i++) {
-
-                  var newFriendIndex = newFriendScores[i];
-                  var currentFriendIndex = currentFriend[i];
-                  var difference = Math.abs(newFriendIndex - currentFriendIndex);
-                  add.push(difference);
-                }
-                // Math.abs runs the absolute value of a number
-
-                // i loop closing
-
-                // Adding all user input to check for closet match
-
-                sum = add.reduce(function (a, b) {
-                  return a + b;
-
-                }, 0);
-
-                console.log(sum);
-
-                if (sum < startingSum) {
-                  startingSum = sum;
-
-                  trueFriend = {
-                    friendName: friendsArray[j].name,
-                    friendPhoto: friendsArray[j].link
-                  };
-
-
-
+                  }
 
                 }
 
-              }
+                // Closeing j loop
 
-              // Closeing j loop
+                $("trueFriendName").text(trueFriend.friendName);
+                console.log(trueFriend.friendName)
 
-              $("trueFriendName").text(trueFriend.friendName);
-              console.log(trueFriend.friendName)
+                var friendpic = trueFriend.friendPhoto;
+                $("#img").attr("src", friendpic);
+                console.log(trueFriend);
 
-              var friendpic = trueFriend.friendPhoto;
-              $("#img").attr("src", friendpic);
-              console.log(trueFriend);
+              });
 
-            });
-
-        }
+          }
 
 
-      </script>
+        </script>
 
-   </body>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+
+</body>
 
 </html>
