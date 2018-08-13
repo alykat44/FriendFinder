@@ -338,7 +338,7 @@
             console.log(friendsArray);
             console.log("--------------------------------------");
 
-            // console.log(newFriendScores);
+             console.log(newFriendScores);
 
             // loop through allScores Array to get each index score
 
@@ -350,7 +350,7 @@
               var responses = friendsArray[j].responses;
               allScores.push(responses);
 
-              console.log(allScores);
+               console.log(allScores);
 
               var currentFriend = allScores[j];
 
@@ -376,7 +376,7 @@
 
               }, 0);
 
-              console.log(sum);
+               console.log(sum);
 
               if (sum < startingSum) {
                 startingSum = sum;
@@ -396,11 +396,11 @@
             // Closeing j loop
 
             $("trueFriendName").text(trueFriend.friendName);
-            console.log(trueFriend.friendName)
+            // console.log(trueFriend.friendName)
 
             var friendpic = trueFriend.friendPhoto;
             $("#img").attr("src", friendpic);
-            console.log(trueFriend);
+            // console.log(trueFriend);
 
           });
 
