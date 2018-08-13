@@ -6,7 +6,7 @@
   <title>Survey HTML </title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -179,7 +179,7 @@
             <br>
 
             <br>
-            <hr>
+            
 
             <button type="Submit" class="btn btn-primary btn-lg btn block" id="Submit" data-toggle="modal" data-target="#friendModal">Submit</button>
             <br>
@@ -206,44 +206,45 @@
 
 
                   </div>
+
+
+
+                  <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">
+                      <a href="/survey">Close</a>
+                    </button>
+
+                  </div>
+
                 </div>
 
               </div>
 
             </div>
-        </form>
 
-
-            <footer class="footer">
-
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal"><a href="/survey">Close</a></button>
-
-
-
+            <footer>
               <div class="container">
                 <p>
                   <a href="/api/friends">API Friends List |
                     <a href="https:///github.com/alykat44/friendfinder">GitHub Repo</a>
 
                 </p>
-              </div>
+            
 
 
 
             </footer>
 
-
-
-        </div>
-
-      </div>
-    </div>
+            </form>
+            </div>
 
 
 
 
 
-   <script type="text/javascript">
+
+    <script type="text/javascript">
 
       var newFriend;
       var scores;
@@ -251,10 +252,10 @@
       var add = [];
       var allScores = [];
       var counter = 0;
-      var sumArray = []; 
+      var sumArray = [];
 
 
-     
+
 
 
       $("#Submit").on("click", function () {
@@ -293,10 +294,10 @@
         scores.push(questionTen);
 
 
-        console.log(newFriend); 
+        // console.log(newFriend);
 
         newFriendScores = newFriend.responses;
-        console.log(newFriendscores); 
+        // console.log(newFriendscores);
 
 
         getFriends();
@@ -305,7 +306,7 @@
       });
 
       $("#closeModal").on("click", function () {
-
+        
         $("#friendName").val("");
         $("#friendPic").val("");
         $(".custom-select").val("Select an Option....");
@@ -315,7 +316,7 @@
         startingSum = 100;
         allScores = [];
 
-        $.post("/api/friends", newFriend, function (data) {});
+        $.post("/api/friends", newFriend, function (data) { });
 
       });
 
@@ -323,12 +324,12 @@
 
         var currentURL = window.location.origin;
 
-        
+
 
         $.ajax({ url: currentURL + "/api/friends", method: "GET" })
           .done(function (friendsArray) {
- 
-            
+
+
 
             console.log("--------------------------------------");
             console.log("URL: " + currentURL + "/api/friends");
@@ -352,10 +353,10 @@
               console.log(allScores);
 
               var currentFriend = allScores[j];
- 
 
 
-            //  index of newly entered friend's scores with prepopulated friends to see result and differences
+
+              //  index of newly entered friend's scores with prepopulated friends to see result and differences
 
               for (var i = 0; i < 10; i++) {
 
@@ -363,7 +364,7 @@
                 var currentFriendIndex = currentFriend[i];
                 var difference = Math.abs(newFriendIndex - currentFriendIndex);
                 add.push(difference);
-              } 
+              }
               // Math.abs runs the absolute value of a number
 
               // i loop closing
@@ -404,9 +405,9 @@
           });
 
       }
-   
 
-    </script> 
+
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>

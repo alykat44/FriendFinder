@@ -2,7 +2,7 @@ var friendsArray = [
     
     {name: "Wyatt Earp",
     link: "https://cdn.now.howstuffworks.com/media-content/fde0c7bb-9d61-480e-b23f-b4e4d38fe5ab-1920-1080.jpg",
-    responses: [2,5,3,2,5,5,2,1,4,5]},
+    responses: [4,1,3,2,1,4,2,1,1,4]},
 
 
     {name: "Doc Holladay",
@@ -11,7 +11,7 @@ var friendsArray = [
 
     {name: "Virge",
     link: "https://i.pinimg.com/236x/ec/7d/fa/ec7dfaa8c3f552adcda0ea2ad7c0e1f2--virgil-earp-western-movies.jpg",
-    responses: [5,3,1,1,2,5,5,2,2,3]},
+    responses: [3,3,1,1,2,5,5,2,2,3]},
 
     {name: "Josie",
     link:"https://lh6.googleusercontent.com/-nDVp0817qtY/TYqnmnehkzI/AAAAAAAABZA/LzlIz6uQbrU/s1600/4489-19772.jpg",
