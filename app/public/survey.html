@@ -48,7 +48,7 @@
             <h5>Question 1</h5>
             <h4>Must Love Pitt Bulls!!</h4>
 
-            <select class="custon-select" id="q1value">
+            <select class="custom-select" id="q1value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -62,7 +62,7 @@
             <h5>Question 2</h5>
             <h4>Must Love the Movie Tombstone!!</h4>
 
-            <select class="custon-select" id="q2value">
+            <select class="custom-select" id="q2value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -76,7 +76,7 @@
             <h5>Question 3</h5>
             <h4>Hot Dogs and Bolonga are the Enemy?</h4>
 
-            <select class="custon-select" id="q3value">
+            <select class="custom-select" id="q3value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -89,7 +89,7 @@
             <h5>Question 4</h5>
             <h4>Do you enjoy outdoor activities, kayaking, hiking, camping etc.......</h4>
 
-            <select class="custon-select" id="q4value">
+            <select class="custom-select" id="q4value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -102,7 +102,7 @@
             <h5>Question 5</h5>
             <h4>I believe that Quality Time is the most Important aspect of a relationship!!</h4>
 
-            <select class="custon-select" id="q5value">
+            <select class="custom-select" id="q5value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -115,7 +115,7 @@
             <h5>Question 6</h5>
             <h4>Must Love Kansas Jayhawk Basketball</h4>
 
-            <select class="custon-select" id="q6value">
+            <select class="custom-select" id="q6value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -128,7 +128,7 @@
             <h5>Question 7</h5>
             <h4>It's Okay to Eat off My plate in public or at home</h4>
 
-            <select class="custon-select" id="q7value">
+            <select class="custom-select" id="q7value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -141,7 +141,7 @@
             <h5>Question 8</h5>
             <h4>Do you think housework is equal for both partners?</h4>
 
-            <select class="custon-select" id="q8value">
+            <select class="custom-select" id="q8value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -154,7 +154,7 @@
             <h5>Question 9</h5>
             <h4>A few Dog hairs here and their isn't a big deal......</h4>
 
-            <select class="custon-select" id="q9value">
+            <select class="custom-select" id="q9value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -167,7 +167,7 @@
             <h5>Question 10</h5>
             <h4>Vacationing is the best and I want to do much more..........</h4>
 
-            <select class="custon-select" id="q10value">
+            <select class="custom-select" id="q10value">
               <option selected>Select an Option...</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -211,10 +211,15 @@
               </div>
 
             </div>
-
+        </form>
 
 
             <footer class="footer">
+
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal"><a href="/survey">Close</a></button>
+
+
+
               <div class="container">
                 <p>
                   <a href="/api/friends">API Friends List |
@@ -224,179 +229,187 @@
               </div>
 
 
+
             </footer>
 
 
 
         </div>
 
+      </div>
+    </div>
 
 
 
 
 
-        <script type="text/javascript">
+   <script type="text/javascript">
 
-          var newFriend;
-          var scores;
-          var newFriendscores;
-          var add = [];
-          var allScores = [];
-          var counter = 0;
-          var sumArray = [];
-
-
-          $("#Submit").on("click", function () {
-            event.preventDefault();
-
-            scores = [];
-
-            newFriend = {
-              name: $("#friendName").val().trim(),
-              link: $("#friendPic").val().trim(),
-              responses: scores
-            };
+      var newFriend;
+      var scores;
+      var newFriendscores;
+      var add = [];
+      var allScores = [];
+      var counter = 0;
+      var sumArray = []; 
 
 
-            var questionOne = parseInt($("#q1value").val());
-            var questionTwo = parseInt($("#q2value").val());
-            var questionThree = parseInt($("#q3value").val());
-            var questionFour = parseInt($("#q4value").val());
-            var questionFive = parseInt($("#q5value").val());
-            var questionSix = parseInt($("#q6value").val());
-            var questionSeven = parseInt($("#q7value").val());
-            var questionEight = parseInt($("#q8value").val());
-            var questionNine = parseInt($("#q9value").val());
-            var questionTen = parseInt($("#q10value").val());
+     
 
 
-            scores.push(questionOne);
-            scores.push(questionTwo);
-            scores.push(questionThree);
-            scores.push(questionFour);
-            scores.push(questionFive);
-            scores.push(questionSix);
-            scores.push(questionSeven);
-            scores.push(questionEight);
-            scores.push(questionNine);
-            scores.push(questionTen);
+      $("#Submit").on("click", function () {
+        event.preventDefault();
+
+        scores = [];
+
+        newFriend = {
+          name: $("#friendName").val().trim(),
+          link: $("#friendPic").val().trim(),
+          responses: scores
+        };
 
 
-            /* console.log(newFriend); */
+        var questionOne = parseInt($("#q1value").val());
+        var questionTwo = parseInt($("#q2value").val());
+        var questionThree = parseInt($("#q3value").val());
+        var questionFour = parseInt($("#q4value").val());
+        var questionFive = parseInt($("#q5value").val());
+        var questionSix = parseInt($("#q6value").val());
+        var questionSeven = parseInt($("#q7value").val());
+        var questionEight = parseInt($("#q8value").val());
+        var questionNine = parseInt($("#q9value").val());
+        var questionTen = parseInt($("#q10value").val());
 
-            newFriendScores = newFriend.responses;
-            /* console.log(newFriendscores); */
+
+        scores.push(questionOne);
+        scores.push(questionTwo);
+        scores.push(questionThree);
+        scores.push(questionFour);
+        scores.push(questionFive);
+        scores.push(questionSix);
+        scores.push(questionSeven);
+        scores.push(questionEight);
+        scores.push(questionNine);
+        scores.push(questionTen);
 
 
-            getFriends();
+        console.log(newFriend); 
 
+        newFriendScores = newFriend.responses;
+        console.log(newFriendscores); 
+
+
+        getFriends();
+
+
+      });
+
+      $("#closeModal").on("click", function () {
+
+        $("#friendName").val("");
+        $("#friendPic").val("");
+        $(".custom-select").val("Select an Option....");
+
+        add = [];
+        sum = 0;
+        startingSum = 100;
+        allScores = [];
+
+        $.post("/api/friends", newFriend, function (data) {});
+
+      });
+
+      function getFriends() {
+
+        var currentURL = window.location.origin;
+
+        
+
+        $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+          .done(function (friendsArray) {
+ 
+            
+
+            console.log("--------------------------------------");
+            console.log("URL: " + currentURL + "/api/friends");
+            console.log("--------------------------------------");
+
+            console.log(friendsArray);
+            console.log("--------------------------------------");
+
+            // console.log(newFriendScores);
+
+            // loop through allScores Array to get each index score
+
+            for (var j = 0; j < friendsArray.length; j++) {
+              add = [];
+              sum = 0;
+              startingSum = 100;
+
+              var responses = friendsArray[j].responses;
+              allScores.push(responses);
+
+              console.log(allScores);
+
+              var currentFriend = allScores[j];
+ 
+
+
+            //  index of newly entered friend's scores with prepopulated friends to see result and differences
+
+              for (var i = 0; i < 10; i++) {
+
+                var newFriendIndex = newFriendScores[i];
+                var currentFriendIndex = currentFriend[i];
+                var difference = Math.abs(newFriendIndex - currentFriendIndex);
+                add.push(difference);
+              } 
+              // Math.abs runs the absolute value of a number
+
+              // i loop closing
+
+              // Adding all user input to check for closet match
+
+              sum = add.reduce(function (a, b) {
+                return a + b;
+
+              }, 0);
+
+              console.log(sum);
+
+              if (sum < startingSum) {
+                startingSum = sum;
+
+                trueFriend = {
+                  friendName: friendsArray[j].name,
+                  friendPhoto: friendsArray[j].link
+                };
+
+
+
+
+              }
+
+            }
+
+            // Closeing j loop
+
+            $("trueFriendName").text(trueFriend.friendName);
+            console.log(trueFriend.friendName)
+
+            var friendpic = trueFriend.friendPhoto;
+            $("#img").attr("src", friendpic);
+            console.log(trueFriend);
 
           });
 
-          $("#closeModal").on("click", function () {
+      }
+   
 
-            $("#friendName").val("");
-            $("#friendPic").val("");
-            $(".custom-select").val("Select an Option....");
+    </script> 
 
-            add = [];
-            sum = 0;
-            startingSum = 100;
-            allScores = [];
-
-            $.post("/api/friends", newFriend, function (data) { });
-
-          });
-
-          function getFriends() {
-
-            var currentURL = window.location.origin;
-
-            $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-              .done(function (friendsArray) {
-
-                console.log("garbage");
-
-                console.log("--------------------------------------");
-                console.log("URL: " + currentURL + "/api/friends");
-                console.log("--------------------------------------");
-
-                console.log(friendsArray);
-                console.log("--------------------------------------");
-
-                console.log(newFriendScores);
-
-                // loop through allScores Array to get each index score
-
-                for (var j = 0; j < friendsArray.length; j++) {
-                  add = [];
-                  sum = 0;
-                  startingSum = 100;
-
-                  var responses = friendsArray[j].responses;
-                  allScores.push(responses);
-
-                  console.log(allScores);
-
-                  var currentFriend = allScores[j];
-
-
-
-                  // index of newly entered friend's scores with prepopulated friends to see result and differences
-
-                  for (var i = 0; i < 10; i++) {
-
-                    var newFriendIndex = newFriendScores[i];
-                    var currentFriendIndex = currentFriend[i];
-                    var difference = Math.abs(newFriendIndex - currentFriendIndex);
-                    add.push(difference);
-                  }
-                  // Math.abs runs the absolute value of a number
-
-                  // i loop closing
-
-                  // Adding all user input to check for closet match
-
-                  sum = add.reduce(function (a, b) {
-                    return a + b;
-
-                  }, 0);
-
-                  console.log(sum);
-
-                  if (sum < startingSum) {
-                    startingSum = sum;
-
-                    trueFriend = {
-                      friendName: friendsArray[j].name,
-                      friendPhoto: friendsArray[j].link
-                    };
-
-
-
-
-                  }
-
-                }
-
-                // Closeing j loop
-
-                $("trueFriendName").text(trueFriend.friendName);
-                console.log(trueFriend.friendName)
-
-                var friendpic = trueFriend.friendPhoto;
-                $("#img").attr("src", friendpic);
-                console.log(trueFriend);
-
-              });
-
-          }
-
-
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
 
 </body>
 
